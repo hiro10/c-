@@ -66,7 +66,7 @@ static D3DXVECTOR3 BossBulletData1[BOSS_BULLET_QUANTITY_1]
 	{BossBulletData1[8] = D3DXVECTOR3(-200,40,0)},
 	{BossBulletData1[9] = D3DXVECTOR3(0,-100,0)},
 	{BossBulletData1[10] = D3DXVECTOR3(100,-400,0)},
-	{BossBulletData1[11] = D3DXVECTOR3(100,-600,0)},
+	{BossBulletData1[11] = D3DXVECTOR3(100,-600,10)},
 };
 
 //*****************************************************************************
