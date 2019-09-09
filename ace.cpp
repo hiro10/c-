@@ -63,12 +63,22 @@ void Ace::AceDeadMove()
 
 	// 爆発の発生
 	SetExplosion(ace.pos, (float)(rand() % 200), (float)(rand() % 200), 0);
+	
 
 	// 墜落地点になったら
 	if (pos.y < -700)
 	{
 		// エースを未使用
 		use = false;
+		for (int i = 0; i > 2; i++)
+		{
+			if (i == 1)
+			{
+				// スコアを増やす
+				ChangeScore(2000);
+				break;
+			}
+		}
 
 		if (use == false && hp <= 0)
 		{
@@ -78,8 +88,6 @@ void Ace::AceDeadMove()
 			// フェードアウト
 			SetFade(FADE_OUT);
 
-			// スコアを増やす
-			ChangeScore(2000);
 		}
 	}
 }
