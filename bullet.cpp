@@ -152,10 +152,10 @@ void UpdateBullet(void)
 			{
 				Enemy *enemy;
 
-				for (int nCntEnemy = 0; nCntEnemy < MAX_ENEMY; nCntEnemy++, enemy++)
+				for (int CntEnemy = 0; CntEnemy < MAX_ENEMY; CntEnemy++, enemy++)
 				{
 					// エネミーを取得
-					enemy = GetEnemy(nCntEnemy);
+					enemy = GetEnemy(CntEnemy);
 
 					// エネミーとバレットの当たり判定
 					if (enemy->use == true && bullet->use == true)
@@ -174,7 +174,7 @@ void UpdateBullet(void)
 							SetExplosion(enemy->pos, 170.0f, 170.0f);
 
 							// エネミー消去
-							DeleteEnemy(nCntEnemy);
+							DeleteEnemy(CntEnemy);
 
 							// バレットの消去
 							DeleteBullet(CntBullet);
