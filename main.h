@@ -7,15 +7,39 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+
+
+
 //*****************************************************************************
 // インクルードファイル
 //*****************************************************************************
-#include "windows.h"
+//*****************************************************************************
+// インクルードファイル
+//*****************************************************************************
+#include <windows.h>
+#include <time.h>
+#include <tchar.h>
+#include <stdio.h>
+#include <Effekseer.h>
+#include <EffekseerRendererDX9.h>
+#include <EffekseerSoundXAudio2.h>
+
 #include "d3dx9.h"
 
-#define DIRECTINPUT_VERSION (0x0800)
-#include "dinput.h"			// DirectInput関連のヘッダー
+
+#define DIRECTINPUT_VERSION (0x0800)	// 警告対策
+#include "dinput.h"
 #include "xaudio2.h"		// XAudio2関連のヘッダー
+
+#if _DEBUG
+#pragma comment(lib, "data/EFFECT/lib/x86/Effekseer.Debug.lib" )
+#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerRendererDX9.Debug.lib" )
+#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerSoundXAudio2.Debug.lib" )
+#else
+#pragma comment(lib, "data/EFFECT/lib/x86/Effekseer.Release.lib" )
+#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerRendererDX9.Release.lib" )
+#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerSoundXAudio2.Release.lib" )
+#endif
 
 //*****************************************************************************
 // ライブラリのリンク
@@ -66,6 +90,10 @@ public:
 	D3DCOLOR diffuse;		// 反射光
 	D3DXVECTOR2 tex;		// テクスチャ座標
 };
+
+
+
+
 
 //*************************************
 // モードの種類

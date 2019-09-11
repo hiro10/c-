@@ -6,9 +6,8 @@
 //=============================================================================
 #include "explosion.h"
 #include "input.h"
-#include "camera.h"
-#include "boss.h"
 #include "sound.h"
+#include "camera.h"
 
 //*****************************************************************************
 // プロトタイプ宣言
@@ -16,7 +15,7 @@
 HRESULT MakeVertexExplosion(LPDIRECT3DDEVICE9 Device);
 void SetVertexExplosion(int nIdxBullet, float fSizeX, float fSizeY);
 void SetColorExplosion(int nIdxExplosion, D3DXCOLOR col);
-void SetTextureExplosion(int nIdxExplosion, int nPattern);
+void SetTextureExplosion1(int nIdxExplosion, int nPattern);
 
 //*****************************************************************************
 // グローバル変数
@@ -82,9 +81,7 @@ void UninitExplosion(void)
 void UpdateExplosion(void)
 {
 	
-	// ボスの取得
-	Boss *boss;
-	boss = GetBoss();
+	
 
 	for(int CntExplosion = 0; CntExplosion < MAX_EXPLOSION; CntExplosion++)
 	{
@@ -104,7 +101,7 @@ void UpdateExplosion(void)
 				else
 				{
 					// テクスチャ座標の設定
-					SetTextureExplosion(CntExplosion, Explosion[CntExplosion].Pattern);
+					SetTextureExplosion1(CntExplosion, Explosion[CntExplosion].Pattern);
 				}
 			}
 
@@ -124,12 +121,10 @@ void UpdateExplosion(void)
 				SetColorExplosion(CntExplosion, Explosion[CntExplosion].col);
 			}
 		}
-		// エンディング演出用に未使用に
-		if (GetMode()==MODE_BOSS&&boss->use == false)
-		{
+		
 			// 未使用に
 			Explosion->use = false;
-		}
+		
 	}
 }
 
@@ -153,7 +148,8 @@ void DrawExplosion(void)
 			D3DXMatrixIdentity(&MtxWorldExplosion);
 
 			// ビューマトリックスを取得
-			mtxView = GetMtxView();
+			//mtxView = GetCamera(0)->s_MtxView;
+			mtxView = GetCamerawk()->MtxView;
 
 			MtxWorldExplosion._11 = mtxView._11;
 			MtxWorldExplosion._12 = mtxView._21;
@@ -305,7 +301,7 @@ void SetColorExplosion(int nIdxExplosion, D3DXCOLOR col)
 //=============================================================================
 // テクスチャ座標の設定
 //=============================================================================
-void SetTextureExplosion(int IdxExplosion, int Pattern)
+void SetTextureExplosion1(int IdxExplosion, int Pattern)
 {
 	{//頂点バッファの中身を埋める
 		VERTEX_3D *Vtx;
@@ -362,7 +358,7 @@ int SetExplosion(D3DXVECTOR3 pos, float SizeX, float SizeY, int Type)
 			SetColorExplosion(CntExplosion, Explosion[CntExplosion].col);
 
 			// テクスチャ座標の設定
-			SetTextureExplosion(CntExplosion, 0);
+			SetTextureExplosion1(CntExplosion, 0);
 
 			IdxExplosion = CntExplosion;
 

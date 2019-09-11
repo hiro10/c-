@@ -21,7 +21,7 @@ void SetColorEffect(int nIdxEffect, D3DXCOLOR col);
 LPDIRECT3DTEXTURE9		D3DTextureEffect = NULL;		// テクスチャへのポインタ
 LPDIRECT3DVERTEXBUFFER9 D3DVtxBuffEffect = NULL;		// 頂点バッファインターフェースへのポインタ
 D3DXMATRIX				MtxWorldEffect;				// ワールドマトリックス
-Effect					effect[MAX_EFFECT];			// エフェクトワーク
+Effect1					effect[MAX_EFFECT];			// エフェクトワーク
 
 //=============================================================================
 // 初期化処理

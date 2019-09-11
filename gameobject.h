@@ -132,7 +132,7 @@ public:
 //=============================================================================
 // エフェクトクラス（親：GameObject)
 //=============================================================================
-class Effect :public GameObject
+class Effect1 :public GameObject
 {
 public:
 	D3DXCOLOR col;			// 色

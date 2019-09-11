@@ -178,7 +178,7 @@ HRESULT MakeVertexWallleft(LPDIRECT3DDEVICE9 Device)
 
 	// 頂点データをアンロックする
 	D3DVtxBuffWallleft->Unlock();
-	//}
+
 
 	return S_OK;
 }
