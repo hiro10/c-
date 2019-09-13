@@ -38,6 +38,8 @@
 #include "acehomingbullet.h"
 #include "ui.h"
 #include "mpgauge.h"
+#include "effekseer.h"
+#include <time.h>
 
 //*****************************************************************************
 // プロトタイプ宣言
@@ -47,7 +49,10 @@
 // グローバル変数
 //*****************************************************************************
 bool StopTrigger ;		// ポーズ用のトリガー
-
+#ifdef _DEBUG
+LPD3DXFONT			g_pD3DXFont = NULL;		// フォントへのポインタ
+int					g_nCountFPS;			// FPSカウンタ
+#endif
 //=============================================================================
 // 初期化処理
 //=============================================================================
@@ -119,6 +124,9 @@ HRESULT InitGame(void)
 	// タイマーの初期化
 	InitTimer();
 	ResetTimer(60);
+
+	InitEffekseer(0);
+
 
 	// スコアの初期化
 	InitScore();
@@ -330,6 +338,8 @@ void UninitBossGame(void)
 	// BGM停止
 	StopSound(SOUND_LABEL_BGM001);
 
+	UninitEffekseer();
+
 }
 
 //=============================================================================
@@ -501,6 +511,8 @@ void UpdateBossGame(void)
 		// boss処理の更新
 		UpdateBoss();
 
+		UpdateEffekseer();
+
 		// エフェクト処理の更新
 		UpdateEffect();
 
@@ -647,14 +659,20 @@ void DrawBossGame(void)
 	// 地面処理の描画
 	DrawMeshField();
 
+	DrawEffekseer();
+
 	// boss処理の描画
 	DrawBoss();
 
 	// プレイヤー処理の描画
 	DrawPlayer();
 
+	DrawEffekseer();
+
 	// 爆発処理の描画
 	DrawExplosion();
+
+
 
 	if (GetPositionPlayer().z >= 100.0f)
 	{
@@ -704,3 +722,4 @@ void DrawBossGame(void)
 		DrawPause();
 	}
 }
+

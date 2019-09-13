@@ -309,6 +309,11 @@ void UpdatePlayer(void)
 	Item *item;
 	item = GetItem();
 	
+	if(GetKeyboardTrigger(DIK_M))
+	{
+		SetMode(MODE_BOSS);// = MODE_BOSS;
+	}
+
 	if (player.use == true)
 	{
 		if (player.PlayerMove == 0)
@@ -517,6 +522,7 @@ void UpdatePlayer(void)
 				}
 			}
 		}
+
 
 		// エネミーとの当たり判定
 		Enemy *enemy;

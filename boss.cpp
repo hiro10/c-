@@ -19,6 +19,7 @@
 #include "sound.h"
 #include "fade.h"
 #include "player.h"
+#include "effekseer.h"
 
 //*****************************************************************************
 // グローバル変数
@@ -183,6 +184,8 @@ void UninitBoss(void)
 void UpdateBoss(void)
 {
 	
+	SetEffekseer(boss.pos, 3);
+
 	// バレットの発射間隔
 	int ShotCount = rand() % 6;						
 
@@ -249,6 +252,7 @@ void UpdateBoss(void)
 		// HPが0以下になったら
 		if (boss.hp <= BOSS_DEAD)
 		{
+			
 			// 爆発の発生
 			SetExplosion(boss.pos, 2200, 2200, 0);
 			
