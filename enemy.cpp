@@ -159,22 +159,29 @@ void UpdateEnemy(void)
 		{
 			if (ace->use == false)
 			{
-				enemy[CntEnemy].rot.y = 3.17f;
-				enemy[CntEnemy].Type = ENEMYTYPE_ENEMY2;
-				enemy[CntEnemy].scl = D3DXVECTOR3(4.0f, 4.0f, 2.0f);
-				//ホーミング用の処理
-				Sabun = (player->pos - enemy[CntEnemy].pos);
-				D3DXVec3Normalize(&Sabun, &Sabun);
+				if (enemy[CntEnemy].pos.z > player->pos.z + 40)
+				{
+					enemy[CntEnemy].rot.y = 3.17f;
+					enemy[CntEnemy].Type = ENEMYTYPE_ENEMY2;
+					enemy[CntEnemy].scl = D3DXVECTOR3(4.0f, 4.0f, 2.0f);
+					//ホーミング用の処理
+					Sabun = (player->pos - enemy[CntEnemy].pos);
+					D3DXVec3Normalize(&Sabun, &Sabun);
 
-				// 内積
-				FLOAT Kakudo = D3DXVec3Dot(&Sabun, &enemy[CntEnemy].pos);
-				Kakudo = acosf(Kakudo);
+					// 内積
+					FLOAT Kakudo = D3DXVec3Dot(&Sabun, &enemy[CntEnemy].pos);
+					Kakudo = acosf(Kakudo);
 
-			
-				enemy[CntEnemy].pos.z -= 8.0f;
-				
-				Speed++;
-				enemy[CntEnemy].pos += (Sabun)*(Speed);
+
+					enemy[CntEnemy].pos.z -= 8.0f;
+
+					Speed++;
+					enemy[CntEnemy].pos += (Sabun)*(Speed);
+				}
+				else
+				{
+					enemy[CntEnemy].pos.z-=10.0f;
+				}
 			}
 
 			else

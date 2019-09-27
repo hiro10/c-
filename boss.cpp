@@ -79,7 +79,6 @@ static D3DXVECTOR3 BossHomingBulletData[BOSS_HOMING_QUANTITY]
 	{BossHomingBulletData[0] = D3DXVECTOR3(0, 550,0)},
 	{BossHomingBulletData[1] = D3DXVECTOR3(450,0,0)},
 	{BossHomingBulletData[2] = D3DXVECTOR3(-450,0,0)},
-	
 };
 
 //*****************************************************************************
@@ -195,7 +194,6 @@ void UpdateBoss(void)
 	// ボスの回転
 	boss.rot.y -= BOSS_ROT_Y;
 
-	//？？？？？？？？？？？？？
 	boss.move.x = -sinf(boss.rot.y) * VALUE_MOVE_BOSS_BULLET;
 	boss.move.y = 0;
 	boss.move.z = -cosf(boss.rot.y) * VALUE_MOVE_BOSS_BULLET;
@@ -293,6 +291,8 @@ void DrawBoss(void)
 		D3DXMatrixTranslation(&Translate, boss.pos.x, boss.pos.y, boss.pos.z);
 		D3DXMatrixMultiply(&BossWorld, &BossWorld, &Translate);
 
+
+		
 		// ワールドマトリックスの設定
 		Device->SetTransform(D3DTS_WORLD, &BossWorld);
 

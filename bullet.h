@@ -20,16 +20,10 @@
 #define	BULLET_SIZE_X			(150.0f)						// ビルボードの幅
 #define	BULLET_SIZE_Y			(150.0f)						// ビルボードの高さ
 #define	MAX_BULLET				(1512)							// バレット最大数
-
-#define BULLET_RADIUS			(82)
-#define TUIBI_BULLET_SPEED		(30.0f)
-#define PLAYER_BULLET_FLAME		(13)
-
-#if 0
-#define BULLET_DAMAGE			(100)
-#endif
-#define BULLET_DAMAGE			(100000)
-
+#define BULLET_RADIUS			(82)							// バレットの半径
+#define TUIBI_BULLET_SPEED		(30.0f)							// 追尾時のスピード
+#define PLAYER_BULLET_FLAME		(13)							// バレットの発射間隔用
+#define BULLET_DAMAGE			(100)							// バレットのダメージ
 
 //*****************************************************************************
 // プロトタイプ宣言

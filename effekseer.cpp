@@ -24,7 +24,6 @@ EFFECTCONTROLLER		EffectCtrl;
 
 static ::Effekseer::Vector3D			g_position;
 
-
 //エフェクト構造体
 static const EFK_CHAR* EffectFileName[] =
 {
@@ -34,7 +33,6 @@ static const EFK_CHAR* EffectFileName[] =
 	(const EFK_CHAR*)L"data/EFFECT/sandaga.efk",
 
 };
-
 
 //=============================================================================
 // 初期化処理
@@ -183,8 +181,8 @@ void DrawEffekseer(void)
 	// カメラの取得
 	Camera		*Cwk = GetCamerawk();
 
-	D3DXVECTOR3 cameraEye = Cwk->PosCameraP;
-	D3DXVECTOR3 cameraAt = Cwk->PosCameraR;
+	D3DXVECTOR3 cameraEye = Cwk->PosCameraR;
+	D3DXVECTOR3 cameraAt = Cwk->PosCameraP;
 	D3DXVECTOR3 cameraUp = Cwk->PosCameraU;
 
 	// 投影行列を設定

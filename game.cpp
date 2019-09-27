@@ -49,6 +49,7 @@
 // グローバル変数
 //*****************************************************************************
 bool StopTrigger ;		// ポーズ用のトリガー
+
 #ifdef _DEBUG
 LPD3DXFONT			g_pD3DXFont = NULL;		// フォントへのポインタ
 int					g_nCountFPS;			// FPSカウンタ
@@ -666,8 +667,6 @@ void DrawBossGame(void)
 
 	// プレイヤー処理の描画
 	DrawPlayer();
-
-	DrawEffekseer();
 
 	// 爆発処理の描画
 	DrawExplosion();
