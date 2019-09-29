@@ -124,6 +124,7 @@ void UpdateTitle(void)
 		}
 		SetColorTitleLogo();
 	}
+
 	else
 	{
 		CountAppearStart++;
