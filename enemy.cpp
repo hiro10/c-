@@ -204,7 +204,7 @@ void UpdateEnemy(void)
 			enemy[CntEnemy].pos.z -= 20.0f;
 		}
 
-		if (enemy[CntEnemy].pos.z < -1 || ace->hp <= 0)
+		if (enemy[CntEnemy].pos.z < -2000 || ace->use==true)
 		{
 			enemy[CntEnemy].use=false;
 

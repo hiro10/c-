@@ -183,7 +183,7 @@ void UninitBoss(void)
 void UpdateBoss(void)
 {
 	
-	SetEffekseer(boss.pos, 3);
+	
 
 	// ƒoƒŒƒbƒg‚Ì”­ŽËŠÔŠu
 	int ShotCount = rand() % 6;						

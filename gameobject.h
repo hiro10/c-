@@ -66,7 +66,7 @@ public:
 class Boss:public GameObject
 {
 public:
-	void BossInitStatus();					// ボスのクラスパラメータ初期化の関数
+	void BossInitStatus();					// ボスのクラスパラメータ初期化の関
 
 };
 

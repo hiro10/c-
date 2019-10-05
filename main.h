@@ -29,13 +29,7 @@
 #include "xaudio2.h"		// XAudio2関連のヘッダー
 
 #if _DEBUG
-#pragma comment(lib, "data/EFFECT/lib/x86/Effekseer.Debug.lib" )
-#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerRendererDX9.Debug.lib" )
-#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerSoundXAudio2.Debug.lib" )
-#else
-#pragma comment(lib, "data/EFFECT/lib/x86/Effekseer.Release.lib" )
-#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerRendererDX9.Release.lib" )
-#pragma comment(lib, "data/EFFECT/lib/x86/EffekseerSoundXAudio2.Release.lib" )
+
 #endif
 
 
@@ -89,6 +83,22 @@ public:
 	D3DCOLOR diffuse;		// 反射光
 	D3DXVECTOR2 tex;		// テクスチャ座標
 };
+
+typedef struct
+{
+	VERTEX_2D				s_vertexWk[NUM_VERTEX];			// 頂点情報格納ワーク
+	D3DXVECTOR3				s_pos;							// ポリゴンの座標
+	D3DXVECTOR3				s_rot;							// ポリゴンの回転量
+	int						s_CountAnim;					// アニメーションカウント
+	int						s_PatternAnim;					// アニメーションパターンナンバー
+	D3DXVECTOR3				s_size;							// 見た目の大きさ
+	float					s_Radius;						// ポリゴンの半径
+	float					s_Angle;						// ポリゴンの角度
+
+
+	LPDIRECT3DTEXTURE9		s_texture;						// テクスチャ情報
+
+}PROJECT2D;
 
 //*************************************
 // モードの種類

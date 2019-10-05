@@ -39,6 +39,7 @@
 #include "ui.h"
 #include "mpgauge.h"
 #include "effekseer.h"
+#include "rader.h"
 #include <time.h>
 
 //*****************************************************************************
@@ -126,8 +127,8 @@ HRESULT InitGame(void)
 	InitTimer();
 	ResetTimer(60);
 
-	InitEffekseer(0);
-
+	// レーダーの初期化
+	InitRadar();
 
 	// スコアの初期化
 	InitScore();
@@ -336,10 +337,11 @@ void UninitBossGame(void)
 	// UIの終了処理
 	UninitUi();
 
+	// レーダーの終了処理
+	UninitRadar();
+
 	// BGM停止
 	StopSound(SOUND_LABEL_BGM001);
-
-	UninitEffekseer();
 
 }
 
@@ -449,6 +451,8 @@ void UpdateGame(void)
 
 		// UIの更新
 		UpdateUi();
+
+		UpdateRadar();
 	}
 }
 //=============================================================================
@@ -512,8 +516,6 @@ void UpdateBossGame(void)
 		// boss処理の更新
 		UpdateBoss();
 
-		UpdateEffekseer();
-
 		// エフェクト処理の更新
 		UpdateEffect();
 
@@ -555,6 +557,8 @@ void UpdateBossGame(void)
 
 		// UIの更新
 		UpdateUi();
+
+		UpdateRadar();
 	}
 }
 
@@ -635,12 +639,16 @@ void DrawGame(void)
 
 			// UIの描画
 			DrawUi();
+
+			// レーダーの描画
+			DrawRadar();
 		}
 	}
 
 	// 影処理の描画
 	DrawShadow();
 
+	
 
 	if (StopTrigger == true)
 	{
@@ -659,8 +667,6 @@ void DrawBossGame(void)
 
 	// 地面処理の描画
 	DrawMeshField();
-
-	DrawEffekseer();
 
 	// boss処理の描画
 	DrawBoss();
@@ -704,6 +710,9 @@ void DrawBossGame(void)
 
 		// Mpゲージの描画処理
 		DrawMpGauge();
+
+		// レーダーの描画
+		DrawRadar();
 
 		if (GetPositionPlayer().z > 0.0f)
 		{
